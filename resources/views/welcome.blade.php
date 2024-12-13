@@ -6,6 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    <p>testing CRON12</p>
+    <p>Laravel Breeze</p>
 </body>
 </html>
