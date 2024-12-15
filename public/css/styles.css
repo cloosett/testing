@@ -11203,91 +11203,87 @@ body {
   padding: 5rem 0;
 }
 .button {
-    /* in scss with just one variable i can change opacity with rgba(variable, opacity) but in css it's not possible so i have used three seperate variables */
-    /* with hue-rotate color can be changed */
-    --main-color: rgb(46, 213, 115);
-    --main-bg-color: rgba(46, 213, 116, 0.36);
-    --pattern-color: rgba(228, 20, 20, 0.07);
-
-    /* change this rotation value */
-    filter: hue-rotate(0deg);
-
-    cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 0.5rem;
+    --main-color: rgb(46, 213, 115) !important;
+    --main-bg-color: rgba(46, 213, 116, 0.36) !important;
+    --pattern-color: rgba(228, 20, 20, 0.07) !important;
+    filter: hue-rotate(0deg) !important;
+    cursor: pointer !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5rem !important;
     background: radial-gradient(
         circle,
         var(--main-bg-color) 0%,
         rgba(0, 0, 0, 0) 95%
-    ),
-    linear-gradient(var(--pattern-color) 1px, transparent 1px),
-    linear-gradient(to right, var(--pattern-color) 1px, transparent 1px);
+    ) !important,
+linear-gradient(var(--pattern-color) 1px, transparent 1px) !important,
+linear-gradient(to right, var(--pattern-color) 1px, transparent 1px) !important;
     background-size:
-        cover,
-        15px 15px,
-        15px 15px;
+        cover !important,
+15px 15px !important,
+15px 15px !important;
     background-position:
-        center center,
-        center center,
-        center center;
+        center center !important,
+center center !important,
+center center !important;
     border-image: radial-gradient(
         circle,
         var(--main-color) 0%,
         rgba(0, 0, 0, 0) 100%
-    )
-    1;
-    border-width: 1px 0 1px 0;
-    color: var(--main-color);
-    padding: 1rem 3rem;
-    font-weight: 700;
-    font-size: 1.5rem;
-    transition: background-size 0.2s ease-in-out;
+    ) 1 !important;
+    border-width: 1px 0 1px 0 !important;
+    color: var(--main-color) !important;
+    padding: 1rem 3rem !important;
+    font-weight: 700 !important;
+    font-size: 1.5rem !important;
+    transition: background-size 0.2s ease-in-out !important;
 }
 
 .button:hover {
     background-size:
-        cover,
-        10px 10px,
-        10px 10px;
+        cover !important,
+10px 10px !important,
+10px 10px !important;
 }
+
 .button:active {
-    filter: hue-rotate(250deg);
+    filter: hue-rotate(250deg) !important;
 }
+
 .button-border {
-    border: 8px solid #ffae70;
-    outline: 4px solid;
-    border-radius: 100%;
+    border: 8px solid #ffae70 !important;
+    outline: 4px solid !important;
+    border-radius: 100% !important;
 }
 
 .button-base {
-    background-color: #75221c;
-    outline: 2px solid black;
-    position: relative; /* Gövde içinde konumlama gerekebilir */
-    border-radius: 100%;
+    background-color: #75221c !important;
+    outline: 2px solid black !important;
+    position: relative !important;
+    border-radius: 100% !important;
 }
 
 .button-igor {
-    border-radius: 100%;
-    font-size: 32px;
-    outline: 2px solid black;
-    border: 4px solid;
-    border-left-color: #e7b8b4;
-    border-top-color: #f8c9c5;
-    border-bottom-color: #4e1814;
-    border-right-color: #79241e;
-    background-color: #e64539;
-    cursor: pointer;
-    color: #ffee83;
-    padding: 20px 30px;
-    transform: translateY(-20%);
+    border-radius: 100% !important;
+    font-size: 32px !important;
+    outline: 2px solid black !important;
+    border: 4px solid !important;
+    border-left-color: #e7b8b4 !important;
+    border-top-color: #f8c9c5 !important;
+    border-bottom-color: #4e1814 !important;
+    border-right-color: #79241e !important;
+    background-color: #e64539 !important;
+    cursor: pointer !important;
+    color: #ffee83 !important;
+    padding: 20px 30px !important;
+    transform: translateY(-20%) !important;
 }
 
 .button-igor:hover {
-    transform: translateY(-10%); /* Hover durumunda butonu yukarı kaydır */
+    transform: translateY(-10%) !important;
 }
 
 .button-igor:active {
-    transform: translateY(0); /* Butona tıklanırken konumlandırmayı geri al */
+    transform: translateY(0) !important;
 }
 
 .background-button {
@@ -11295,145 +11291,148 @@ body {
         45deg,
         #3c2209 0 20px,
         #ff9c00 20px 40px
-    );
-    width: 10em;
-    height: 10em;
-    -webkit-box-shadow: 15px 15px 50px 5px #5f5f5f;
-    box-shadow: 15px 15px 50px 5px #5f5f5f;
-    position: relative;
-    display: inline-block;
-    outline: 2px solid black;
+    ) !important;
+    width: 10em !important;
+    height: 10em !important;
+    -webkit-box-shadow: 15px 15px 50px 5px #5f5f5f !important;
+    box-shadow: 15px 15px 50px 5px #5f5f5f !important;
+    position: relative !important;
+    display: inline-block !important;
+    outline: 2px solid black !important;
 }
 
 .background-button::before {
-    content: "";
-    display: inline-block;
-    position: absolute;
-    top: 15%;
-    left: 15%;
-    width: 70%;
-    height: 70%;
-    background: #a0b8c4;
-    border: 2px solid #3c2209;
+    content: "" !important;
+    display: inline-block !important;
+    position: absolute !important;
+    top: 15% !important;
+    left: 15% !important;
+    width: 70% !important;
+    height: 70% !important;
+    background: #a0b8c4 !important;
+    border: 2px solid #3c2209 !important;
 }
 
 .button-emergency {
-    background: #cc2a1f;
-    width: 65%;
-    height: 65%;
-    border-radius: 50%;
-    position: absolute;
-    top: 7.5%;
-    left: 18.25%;
-    color: white;
-    font-size: 1em;
-    font-weight: 900;
-    font-family: 'Courier New', Courier, monospace;
-    -webkit-box-shadow: 0 15px 0 0 #842a2a;
-    box-shadow: 0 15px 0 0 #842a2a;
-    -webkit-transition: all .5s ease;
-    transition: all .5s ease;
-    border: 2px solid black;
+    background: #cc2a1f !important;
+    width: 65% !important;
+    height: 65% !important;
+    border-radius: 50% !important;
+    position: absolute !important;
+    top: 7.5% !important;
+    left: 18.25% !important;
+    color: white !important;
+    font-size: 1em !important;
+    font-weight: 900 !important;
+    font-family: 'Courier New', Courier, monospace !important;
+    -webkit-box-shadow: 0 15px 0 0 #842a2a !important;
+    box-shadow: 0 15px 0 0 #842a2a !important;
+    -webkit-transition: all .5s ease !important;
+    transition: all .5s ease !important;
+    border: 2px solid black !important;
 }
 
 .button-emergency:active {
-    -webkit-box-shadow: 0 1px 1px 1px #8C0606;
-    box-shadow: 0 1px 1px 1px #8C0606;
-    top: 15%;
+    -webkit-box-shadow: 0 1px 1px 1px #8C0606 !important;
+    box-shadow: 0 1px 1px 1px #8C0606 !important;
+    top: 15% !important;
 }
 
 .background-button:has(.button:active) + .emergency {
-    display: block;
-    -webkit-transform: rotate(0deg) scaleY(1);
-    -ms-transform: rotate(0deg) scaleY(1);
-    transform: rotate(0deg) scaleY(1);
-    -webkit-animation: anims 0.25s cubic-bezier(0.075, 0.82, 0.165, 1);
-    animation: anims 0.25s cubic-bezier(0.075, 0.82, 0.165, 1);
+    display: block !important;
+    -webkit-transform: rotate(0deg) scaleY(1) !important;
+    -ms-transform: rotate(0deg) scaleY(1) !important;
+    transform: rotate(0deg) scaleY(1) !important;
+    -webkit-animation: anims 0.25s cubic-bezier(0.075, 0.82, 0.165, 1) !important;
+    animation: anims 0.25s cubic-bezier(0.075, 0.82, 0.165, 1) !important;
 }
 
 @keyframes anims {
     0% {
-        -webkit-transform: rotate(-30deg) scaleY(0.25);
-        transform: rotate(-30deg) scaleY(0.25);
+        -webkit-transform: rotate(-30deg) scaleY(0.25) !important;
+        transform: rotate(-30deg) scaleY(0.25) !important;
     }
 
     100% {
-        -webkit-transform: rotate(0deg) scaleY(1);
-        transform: rotate(0deg) scaleY(1);
+        -webkit-transform: rotate(0deg) scaleY(1) !important;
+        transform: rotate(0deg) scaleY(1) !important;
     }
 }
 
 .emergency {
-    position: absolute;
-    display: none;
+    position: absolute !important;
+    display: none !important;
 }
+
 .igor-button {
-    cursor: pointer;
-    width: 3em;
-    height: 3em;
-    content: "";
-    border-radius: 1.5em;
-    border: none;
-    background: linear-gradient(-45deg, red, coral 8px, red);
-    transform: translateY(-20%);
-    transition: 0.1s linear;
+    cursor: pointer !important;
+    width: 3em !important;
+    height: 3em !important;
+    content: "" !important;
+    border-radius: 1.5em !important;
+    border: none !important;
+    background: linear-gradient(-45deg, red, coral 8px, red) !important;
+    transform: translateY(-20%) !important;
+    transition: 0.1s linear !important;
 }
 
 .outline-igor {
-    outline: 10px solid lightcoral;
-    border-radius: 50px;
-    background: #e0e0e0;
-    background-color: red;
+    outline: 10px solid lightcoral !important;
+    border-radius: 50px !important;
+    background: #e0e0e0 !important;
+    background-color: red !important;
 }
 
 .outline-igor {
-    transform: scaleY(0.8);
+    transform: scaleY(0.8) !important;
 }
 
 .igor-button:active {
-    transform: translate(0, 0);
+    transform: translate(0, 0) !important;
 }
 
 .sidjey-button {
-    cursor: pointer;
-    width: 3em;
-    height: 3em;
-    content: "";
-    border-radius: 1.5em;
-    border: none;
-    background: linear-gradient(-45deg, #003cff, #506dff 8px, #003cff);
-    transform: translateY(-20%);
-    transition: 0.1s linear;
+    cursor: pointer !important;
+    width: 3em !important;
+    height: 3em !important;
+    content: "" !important;
+    border-radius: 1.5em !important;
+    border: none !important;
+    background: linear-gradient(-45deg, #003cff, #506dff 8px, #003cff) !important;
+    transform: translateY(-20%) !important;
+    transition: 0.1s linear !important;
 }
 
 .outline {
-    outline: 10px solid #5946d2;
-    border-radius: 50px;
-    background: #e0e0e0;
-    background-color: #0248fa;
+    outline: 10px solid #5946d2 !important;
+    border-radius: 50px !important;
+    background: #e0e0e0 !important;
+    background-color: #0248fa !important;
 }
 
 .outline {
-    transform: scaleY(0.8);
+    transform: scaleY(0.8) !important;
 }
 
 .sidjey-button:active {
-    transform: translate(0, 0);
+    transform: translate(0, 0) !important;
 }
+
 .custom-text {
-    font-family: 'Arial', sans-serif; /* Можна замінити на будь-який шрифт */
-    font-weight: bold;
-    font-size: 36px; /* Збільшено розмір шрифта */
-    letter-spacing: 2px; /* Збільшено відстань між літерами */
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6); /* Тінь на тексті */
-    text-transform: uppercase; /* Всі літери великі */
-    background: linear-gradient(to right, #ff7e5f, #feb47b); /* Градієнтний фон для тексту */
-    -webkit-background-clip: text; /* Для того, щоб градієнт працював на тексті */
-    color: transparent; /* Колір тексту стає прозорим, градієнт на тексті */
-    transition: all 0.3s ease-in-out; /* Плавна зміна стилів */
+    font-family: 'Arial', sans-serif !important;
+    font-weight: bold !important;
+    font-size: 36px !important;
+    letter-spacing: 2px !important;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6) !important;
+    text-transform: uppercase !important;
+    background: linear-gradient(to right, #ff7e5f, #feb47b) !important;
+    -webkit-background-clip: text !important;
+    color: transparent !important;
+    transition: all 0.3s ease-in-out !important;
 }
 
 .custom-text:hover {
-    transform: scale(1.1); /* Текст збільшується при наведенні */
-    text-shadow: 4px 4px 15px rgba(0, 0, 0, 0.8); /* Змінена тінь при наведенні */
+    transform: scale(1.1) !important;
+    text-shadow: 4px 4px 15px rgba(0, 0, 0, 0.8) !important;
 }
+
