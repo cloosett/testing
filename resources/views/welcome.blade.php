@@ -41,13 +41,15 @@
                     <div class="col-lg-8">
                         <h2 class="text-white mb-4 custom-text">ГОЛОСУЙ!</h2>
                         <div style="display: flex; justify-content: center">
-                            <button name="vote" value="igor" class="btn-igor" style="margin-right: 100px;">
-                                <span class="back"></span>
-                                <span class="front"></span>
+                            <button class="pushable" style="margin-right: 50px;">
+                                <span class="shadow"></span>
+                                <span class="edge"></span>
+                                <span class="front"> IGOR </span>
                             </button>
-                            <button name="vote" value="sidjey" class="btn-igor">
-                                <span class="back"></span>
-                                <span class="front"></span>
+                            <button class="pushable">
+                                <span class="shadow"></span>
+                                <span class="edge"></span>
+                                <span class="front"> SIDJEY </span>
                             </button>
                         </div>
                     </div>
