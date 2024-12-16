@@ -11202,222 +11202,58 @@ body {
 .footer {
   padding: 5rem 0;
 }
-.button {
-    --main-color: rgb(46, 213, 115) !important;
-    --main-bg-color: rgba(46, 213, 116, 0.36) !important;
-    --pattern-color: rgba(228, 20, 20, 0.07) !important;
-    filter: hue-rotate(0deg) !important;
-    cursor: pointer !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.5rem !important;
-    background: radial-gradient(
-        circle,
-        var(--main-bg-color) 0%,
-        rgba(0, 0, 0, 0) 95%
-    ) !important,
-linear-gradient(var(--pattern-color) 1px, transparent 1px) !important,
-linear-gradient(to right, var(--pattern-color) 1px, transparent 1px) !important;
-    background-size:
-        cover !important,
-15px 15px !important,
-15px 15px !important;
-    background-position:
-        center center !important,
-center center !important,
-center center !important;
-    border-image: radial-gradient(
-        circle,
-        var(--main-color) 0%,
-        rgba(0, 0, 0, 0) 100%
-    ) 1 !important;
-    border-width: 1px 0 1px 0 !important;
-    color: var(--main-color) !important;
-    padding: 1rem 3rem !important;
-    font-weight: 700 !important;
-    font-size: 1.5rem !important;
-    transition: background-size 0.2s ease-in-out !important;
-}
 
-.button:hover {
-    background-size:
-        cover !important,
-10px 10px !important,
-10px 10px !important;
-}
-
-.button:active {
-    filter: hue-rotate(250deg) !important;
-}
-
-.button-border {
-    border: 8px solid #ffae70 !important;
-    outline: 4px solid !important;
-    border-radius: 100% !important;
-}
-
-.button-base {
-    background-color: #75221c !important;
-    outline: 2px solid black !important;
-    position: relative !important;
-    border-radius: 100% !important;
-}
-
-.button-igor {
-    border-radius: 100% !important;
-    font-size: 32px !important;
-    outline: 2px solid black !important;
-    border: 4px solid !important;
-    border-left-color: #e7b8b4 !important;
-    border-top-color: #f8c9c5 !important;
-    border-bottom-color: #4e1814 !important;
-    border-right-color: #79241e !important;
-    background-color: #e64539 !important;
-    cursor: pointer !important;
-    color: #ffee83 !important;
-    padding: 20px 30px !important;
-    transform: translateY(-20%) !important;
-}
-
-.button-igor:hover {
-    transform: translateY(-10%) !important;
-}
-
-.button-igor:active {
-    transform: translateY(0) !important;
-}
-
-.background-button {
-    background: repeating-linear-gradient(
-        45deg,
-        #3c2209 0 20px,
-        #ff9c00 20px 40px
-    ) !important;
-    width: 10em !important;
-    height: 10em !important;
-    -webkit-box-shadow: 15px 15px 50px 5px #5f5f5f !important;
-    box-shadow: 15px 15px 50px 5px #5f5f5f !important;
-    position: relative !important;
-    display: inline-block !important;
-    outline: 2px solid black !important;
-}
-
-.background-button::before {
-    content: "" !important;
-    display: inline-block !important;
-    position: absolute !important;
-    top: 15% !important;
-    left: 15% !important;
-    width: 70% !important;
-    height: 70% !important;
-    background: #a0b8c4 !important;
-    border: 2px solid #3c2209 !important;
-}
-
-.button-emergency {
-    background: #cc2a1f !important;
-    width: 65% !important;
-    height: 65% !important;
-    border-radius: 50% !important;
-    position: absolute !important;
-    top: 7.5% !important;
-    left: 18.25% !important;
-    color: white !important;
-    font-size: 1em !important;
-    font-weight: 900 !important;
-    font-family: 'Courier New', Courier, monospace !important;
-    -webkit-box-shadow: 0 15px 0 0 #842a2a !important;
-    box-shadow: 0 15px 0 0 #842a2a !important;
-    -webkit-transition: all .5s ease !important;
-    transition: all .5s ease !important;
-    border: 2px solid black !important;
-}
-
-.button-emergency:active {
-    -webkit-box-shadow: 0 1px 1px 1px #8C0606 !important;
-    box-shadow: 0 1px 1px 1px #8C0606 !important;
-    top: 15% !important;
-}
-
-.background-button:has(.button:active) + .emergency {
-    display: block !important;
-    -webkit-transform: rotate(0deg) scaleY(1) !important;
-    -ms-transform: rotate(0deg) scaleY(1) !important;
-    transform: rotate(0deg) scaleY(1) !important;
-    -webkit-animation: anims 0.25s cubic-bezier(0.075, 0.82, 0.165, 1) !important;
-    animation: anims 0.25s cubic-bezier(0.075, 0.82, 0.165, 1) !important;
-}
-
-@keyframes anims {
-    0% {
-        -webkit-transform: rotate(-30deg) scaleY(0.25) !important;
-        transform: rotate(-30deg) scaleY(0.25) !important;
-    }
-
-    100% {
-        -webkit-transform: rotate(0deg) scaleY(1) !important;
-        transform: rotate(0deg) scaleY(1) !important;
-    }
-}
-
-.emergency {
-    position: absolute !important;
-    display: none !important;
-}
-
-.igor-button {
-    cursor: pointer !important;
-    width: 3em !important;
-    height: 3em !important;
-    content: "" !important;
-    border-radius: 1.5em !important;
+.btn-igor {
+    --primary: 255, 90, 120 !important;
+    --secondary: 150, 50, 60 !important;
+    width: 60px !important;
+    height: 50px !important;
     border: none !important;
-    background: linear-gradient(-45deg, red, coral 8px, red) !important;
-    transform: translateY(-20%) !important;
-    transition: 0.1s linear !important;
-}
-
-.outline-igor {
-    outline: 10px solid lightcoral !important;
-    border-radius: 50px !important;
-    background: #e0e0e0 !important;
-    background-color: red !important;
-}
-
-.outline-igor {
-    transform: scaleY(0.8) !important;
-}
-
-.igor-button:active {
-    transform: translate(0, 0) !important;
-}
-
-.sidjey-button {
+    outline: none !important;
     cursor: pointer !important;
-    width: 3em !important;
-    height: 3em !important;
-    content: "" !important;
-    border-radius: 1.5em !important;
-    border: none !important;
-    background: linear-gradient(-45deg, #003cff, #506dff 8px, #003cff) !important;
-    transform: translateY(-20%) !important;
-    transition: 0.1s linear !important;
+    user-select: none !important;
+    touch-action: manipulation !important;
+    outline: 10px solid rgb(var(--primary), .5) !important;
+    border-radius: 100% !important;
+    position: relative !important;
+    transition: .3s !important;
 }
 
-.outline {
-    outline: 10px solid #5946d2 !important;
-    border-radius: 50px !important;
-    background: #e0e0e0 !important;
-    background-color: #0248fa !important;
+.btn-igor .back {
+    background: rgb(var(--secondary)) !important;
+    border-radius: 100% !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
 }
 
-.outline {
-    transform: scaleY(0.8) !important;
+.btn-igor .front {
+    background: linear-gradient(0deg, rgba(var(--primary), .6) 20%, rgba(var(--primary)) 50%) !important;
+    box-shadow: 0 .5em 1em -0.2em rgba(var(--secondary), .5) !important;
+    border-radius: 100% !important;
+    position: absolute !important;
+    border: 1px solid rgb(var(--secondary)) !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    font-size: 1.2rem !important;
+    font-weight: 600 !important;
+    font-family: inherit !important;
+    transform: translateY(-15%) !important;
+    transition: .15s !important;
+    color: rgb(var(--secondary)) !important;
 }
 
-.sidjey-button:active {
-    transform: translate(0, 0) !important;
+.btn-igor:active .front {
+    transform: translateY(0%) !important;
+    box-shadow: 0 0 !important;
 }
-
 .custom-text {
     font-family: 'Arial', sans-serif !important;
     font-weight: bold !important;
