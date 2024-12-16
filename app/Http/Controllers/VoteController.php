@@ -43,7 +43,7 @@ class VoteController extends Controller
         ]);
 
         if ($offer) {
-            return redirect()->back()->with('message', 'Дякую за пропозицію!')->withFragment('about');
+            return redirect()->back()->with('messageoffers', 'Дякую за пропозицію!')->withFragment('about');
         }
     }
 
