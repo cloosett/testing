@@ -105,6 +105,11 @@
                     {{ $message }}
                 </div>
                 @enderror
+                @if (session('messageoffers'))
+                    <div class="alert alert-success" style="max-width: 70%; margin: 0 auto; margin-top:30px;">
+                        {{ session('messageoffers') }}
+                    </div>
+                @endif
             </div>
         </div>
     </section>
