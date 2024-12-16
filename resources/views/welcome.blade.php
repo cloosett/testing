@@ -41,12 +41,12 @@
                     <div class="col-lg-8">
                         <h2 class="text-white mb-4 custom-text">ГОЛОСУЙ!</h2>
                         <div style="display: flex; justify-content: center">
-                            <button class="pushable" style="margin-right: 50px;">
+                            <button class="pushable" name="vote" value="igor" style="margin-right: 50px;">
                                 <span class="shadow"></span>
                                 <span class="edge"></span>
                                 <span class="front"> IGOR </span>
                             </button>
-                            <button class="pushable">
+                            <button class="pushable" name="vote" value="sidjey">
                                 <span class="shadow"></span>
                                 <span class="edge"></span>
                                 <span class="front"> SIDJEY </span>
@@ -100,11 +100,11 @@
                         </div>
                     </form>
                 </div>
-                @if ($errors->has('vote'))
-                    <div class="alert alert-danger" style="max-width: 70%; margin: 0 auto">
-                        {{ $errors->first('vote') }}
-                    </div>
-                @endif
+                @error('offer')
+                <div class="alert alert-danger mt-2">
+                    {{ $message }}
+                </div>
+                @enderror
             </div>
         </div>
     </section>

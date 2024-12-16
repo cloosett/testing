@@ -25,18 +25,23 @@ class VoteController extends Controller
             'ip_address' => $request->ip(),
         ]);
 
-        return redirect()->back()->with('message', 'Your vote has been recorded.')->withFragment('about');
+        return redirect()->back()->with('message', 'Ваш голос успішно зараховано!')->withFragment('about');
     }
 
     public function offers(Request $request)
     {
         $validated = $request->validate([
-            'offer' => 'required|string|max:255',
+            'offer' => 'required|string|min:3|max:255',
+        ], [
+            'offer.required' => 'Будь ласка, введіть вашу пропозицію.',
+            'offer.min' => 'Пропозиція повинна бути не менше 3 символів.',
+            'offer.max' => 'Пропозиція не може перевищувати 255 символів.',
         ]);
 
         $offer = Offers::create([
             'offer' => $validated['offer'],
         ]);
+
         if ($offer) {
             return redirect()->back()->with('message', 'Дякую за пропозицію!')->withFragment('about');
         }
