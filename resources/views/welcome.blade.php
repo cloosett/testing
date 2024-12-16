@@ -27,7 +27,7 @@
                 <div class="text-center">
                     <h1 class="mx-auto my-0 text-uppercase">Sofia</h1>
                     <h2 class="text-white-50 mx-auto mt-2 mb-5">Приймаємо ваші ставки на цю зиму</h2>
-                    <a class="button" href="#about">Start</a>
+                    <a class="btn btn-dark" href="#about">START</a>
                 </div>
             </div>
         </div>
@@ -35,19 +35,24 @@
     <!-- About-->
     <section class="about-section text-center" id="about">
         <div class="container px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 justify-content-center">
-                <div class="col-lg-8">
-                    <h2 class="text-white mb-4 custom-text">ГОЛОСУЙ!</h2>
-                    <div style="display: flex; justify-content: center">
-                        <div class="outline-igor" style="margin-right: 100px">
-                            <button class="igor-button"></button>
-                        </div>
-                        <div class="outline">
-                            <button class="sidjey-button"></button>
+            <form action="{{ route('vote') }}" method="post">
+                @csrf
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-lg-8">
+                        <h2 class="text-white mb-4 custom-text">ГОЛОСУЙ!</h2>
+                        <div style="display: flex; justify-content: center">
+                            <button name="vote" value="igor" class="btn-igor" style="margin-right: 100px;">
+                                <span class="back"></span>
+                                <span class="front"></span>
+                            </button>
+                            <button name="vote" value="sidjey" class="btn-igor">
+                                <span class="back"></span>
+                                <span class="front"></span>
+                            </button>
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
             <table class="table" style="--bs-table-color: white; margin-top:25px;">
                 <thead>
                 <tr>
@@ -57,24 +62,47 @@
                 </thead>
                 <tbody class="table-group-divider">
                 <tr>
-                    <td>1</td>
-                    <td>2</td>
+                    <td>{{ $votesIgor }}</td>
+                    <td>{{ $votesSidjey }}</td>
                 </tr>
                 </tbody>
             </table>
         </div>
+        @if ($errors->has('error'))
+            <div class="alert alert-danger" style="max-width: 70%; margin: 0 auto">
+                {{ $errors->first('error') }}
+            </div>
+        @endif
+
+        @if ($errors->has('vote'))
+            <div class="alert alert-danger" style="max-width: 70%; margin: 0 auto">
+                {{ $errors->first('vote') }}
+            </div>
+        @endif
+
+        @if (session('message'))
+            <div class="alert alert-success" style="max-width: 70%; margin: 0 auto">
+                {{ session('message') }}
+            </div>
+        @endif
         <div class="container px-4 px-lg-5" style="margin-top: 100px;">
             <div class="row gx-4 gx-lg-5">
                 <div class="col-md-10 col-lg-8 mx-auto text-center">
                     <i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
                     <h2 class="text-white mb-5">Що ще можна добавити на сайт?</h2>
-                    <form class="form-signup" id="contactForm">
+                    <form class="form-signup" id="contactForm" action="{{route('offers')}}" method="post">
+                        @csrf
                         <div class="row input-group-newsletter" style="display: flex;flex-direction: column">
-                            <div class="col" style="margin-bottom: 20px"><input class="form-control" id="text" type="text" placeholder="Ваші пропозиції..." /></div>
+                            <div class="col" style="margin-bottom: 20px"><input class="form-control" id="text" type="text" name="offer" placeholder="Ваші пропозиції..." style="height: 65px" /></div>
                             <div class="col-auto"><button class="btn btn-primary" id="submitButton" type="submit">Відправити!</button></div>
                         </div>
                     </form>
                 </div>
+                @if ($errors->has('vote'))
+                    <div class="alert alert-danger" style="max-width: 70%; margin: 0 auto">
+                        {{ $errors->first('vote') }}
+                    </div>
+                @endif
             </div>
         </div>
     </section>
