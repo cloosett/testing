@@ -113,6 +113,7 @@
             </div>
         </div>
     </section>
+    <counter></counter>
     <!-- Contact-->
     <section class="contact-section bg-black">
         <div class="container px-4 px-lg-5">
