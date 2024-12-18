@@ -44,7 +44,7 @@ jobs:
         run: |
           php artisan cache:clear
           php artisan optimize
-          php artisan migrate --force  # Виконується без запиту на підтвердження
+
 
       # Крок 10: Виведення статусу роботи пайплайна
       - run: echo "🍏 This job's status is ${{ job.status }}."
