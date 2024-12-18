@@ -1,50 +1,50 @@
-name: Testing CI/CD
-
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+name: Deploy Laravel Application
 
 on:
   push:
     branches:
-      - main  # або інша ваша основна гілка
+      - main  # або ваша основна гілка для деплою
 
 jobs:
-  Explore-GitHub-Actions:
-    runs-on: ubuntu-latest   # Вказуємо, що пайплайн має виконуватись на Ubuntu
+  deploy:
+    runs-on: ubuntu-latest
 
     steps:
-      # Крок 1: Виведення повідомлення про запуск
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-
-      # Крок 4: Клонування репозиторію
+      # 1. Checkout коду з репозиторію
       - name: Check out repository code
         uses: actions/checkout@v4
 
-      # Крок 5: Виведення повідомлення про те, що репозиторій клоновано
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-
-      # Крок 6: Перевірка списку файлів у репозиторії
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
-
-      # Крок 7: Налаштування PHP середовища для Laravel
+      # 2. Налаштування PHP
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.1'  # Вказуємо необхідну версію PHP
-          extensions: mbstring, bcmath, intl, gd, sqlite3  # Перелік розширень для Laravel
+          php-version: '8.1'
+          extensions: mbstring, bcmath, intl, gd, sqlite3
 
-      # Крок 8: Встановлення залежностей проекту
+      # 3. Встановлення залежностей через Composer
       - name: Install dependencies
         run: |
           composer install --prefer-dist --no-interaction --optimize-autoloader
 
-      # Крок 9: Виконання команд Laravel (очищення кешу, оптимізація, міграції)
-      - name: Clear Cache, Optimize, Migrate
+      # 5. Підключення через SSH та деплой за допомогою пароля
+      - name: Deploy to server via SSH
+        env:
+          SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_HOST: ${{ secrets.SSH_HOST }}
         run: |
-          php artisan cache:clear
-          php artisan optimize
+          # Встановлення необхідних інструментів для підключення по SSH
+          sudo apt-get update
+          sudo apt-get install -y sshpass
 
-
-      # Крок 10: Виведення статусу роботи пайплайна
-      - run: echo "🍏 This job's status is ${{ job.status }}."
+          # Підключення до сервера через SSH за допомогою пароля
+          sshpass -p $SSH_PASSWORD ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST << 'EOF'
+            # Команди для деплою на сервер
+            cd /path/to/your/laravel/project
+            git pull origin main
+            composer install --no-dev --optimize-autoloader
+            php artisan migrate --force
+            php artisan config:clear
+            php artisan cache:clear
+            php artisan optimize
+          EOF
