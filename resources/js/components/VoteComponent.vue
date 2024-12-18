@@ -1,24 +1,22 @@
 <template>
     <div class="container px-4 px-lg-5">
-        <form action="#" method="post">
-            <div class="row gx-4 gx-lg-5 justify-content-center">
-                <div class="col-lg-8">
-                    <h2 class="text-white mb-4 custom-text">ГОЛОСУЙ!</h2>
-                    <div style="display: flex; justify-content: center">
-                        <button @click.prevent="sendvote('igor')" class="pushable" style="margin-right: 50px;">
-                            <span class="shadow"></span>
-                            <span class="edge"></span>
-                            <span class="front"> IGOR </span>
-                        </button>
-                        <button @click.prevent="sendvote('sidjey')" class="pushable">
-                            <span class="shadow"></span>
-                            <span class="edge"></span>
-                            <span class="front"> SIDJEY </span>
-                        </button>
-                    </div>
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-lg-8">
+                <h2 class="text-white mb-4 custom-text">ГОЛОСУЙ!</h2>
+                <div style="display: flex; justify-content: center">
+                    <button @click.prevent="sendvote('igor')" class="pushable" style="margin-right: 50px;">
+                        <span class="shadow"></span>
+                        <span class="edge"></span>
+                        <span class="front"> IGOR </span>
+                    </button>
+                    <button @click.prevent="sendvote('sidjey')" class="pushable">
+                        <span class="shadow"></span>
+                        <span class="edge"></span>
+                        <span class="front"> SIDJEY </span>
+                    </button>
                 </div>
             </div>
-        </form>
+        </div>
         <table class="table" style="--bs-table-color: white; margin-top:25px;">
             <thead>
             <tr>
@@ -28,8 +26,8 @@
             </thead>
             <tbody class="table-group-divider">
             <tr>
-                <td>{{ this.igor }}</td>
-                <td>{{ this.sidjey }}</td>
+                <td>{{ igor }}</td>
+                <td>{{ sidjey }}</td>
             </tr>
             </tbody>
         </table>
@@ -46,24 +44,23 @@ export default {
         }
     },
     methods: {
-        // Метод для отримання кількості голосів
-        getvote() {
-            axios.get('/api/getvote')
-                .then(res => {
-                    this.igor = res.data.igor
-                    this.sidjey = res.data.sidjey
-                })
+        async getvote() {
+            try {
+                const res = await axios.get('/api/getvote');
+                this.igor = res.data.igor;
+                this.sidjey = res.data.sidjey;
+            } catch (error) {
+                console.error("Error fetching votes:", error);
+            }
         },
-        sendvote(voteOption) {
-            axios.post('/api/vote', {
-                vote: voteOption
-            })
-                .then(() => {
-                    this.getvote();
-                })
-                .catch((error) => {
-                    console.error("Error voting:", error);
-                });
+
+        async sendvote(voteOption) {
+            try {
+                await axios.post('/api/vote', {vote: voteOption});
+                await this.getvote();
+            } catch (error) {
+                console.error("Error voting:", error);
+            }
         }
     },
     mounted() {
