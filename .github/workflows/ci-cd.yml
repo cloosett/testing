@@ -1,18 +1,50 @@
-name: GitHub Actions Demo
+name: Testing CI/CD
+
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-on: [push]
+
+on:
+  push:
+    branches:
+      - main  # або інша ваша основна гілка
+
 jobs:
   Explore-GitHub-Actions:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest   # Вказуємо, що пайплайн має виконуватись на Ubuntu
+
     steps:
+      # Крок 1: Виведення повідомлення про запуск
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+
+      # Крок 4: Клонування репозиторію
       - name: Check out repository code
         uses: actions/checkout@v4
+
+      # Крок 5: Виведення повідомлення про те, що репозиторій клоновано
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+
+      # Крок 6: Перевірка списку файлів у репозиторії
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
+
+      # Крок 7: Налаштування PHP середовища для Laravel
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'  # Вказуємо необхідну версію PHP
+          extensions: mbstring, bcmath, intl, gd, sqlite3  # Перелік розширень для Laravel
+
+      # Крок 8: Встановлення залежностей проекту
+      - name: Install dependencies
+        run: |
+          composer install --prefer-dist --no-interaction --optimize-autoloader
+
+      # Крок 9: Виконання команд Laravel (очищення кешу, оптимізація, міграції)
+      - name: Clear Cache, Optimize, Migrate
+        run: |
+          php artisan cache:clear
+          php artisan optimize
+          php artisan migrate --force  # Виконується без запиту на підтвердження
+
+      # Крок 10: Виведення статусу роботи пайплайна
       - run: echo "🍏 This job's status is ${{ job.status }}."
