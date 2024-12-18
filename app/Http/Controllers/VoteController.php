@@ -33,7 +33,7 @@ class VoteController extends Controller
             'ip_address' => $request->ip(),
         ]);
 
-        return redirect()->back()->with('message', 'Ваш голос успішно зараховано!')->withFragment('about');
+        return response()->json('success');
     }
 
     public function offers(Request $request)
