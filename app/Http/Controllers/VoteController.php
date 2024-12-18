@@ -8,6 +8,15 @@ use Illuminate\Http\Request;
 
 class VoteController extends Controller
 {
+    public function getVote(){
+        $votesIgor = Votes::where('vote', 'igor')->count();
+        $votesSidjey = Votes::where('vote', 'sidjey')->count();
+
+        return response()->json([
+            'igor' => $votesIgor,
+            'sidjey' => $votesSidjey,
+        ]);
+    }
     public function vote(Request $request)
     {
 //        $existingVote = Votes::where('ip_address', $request->ip())->first();
@@ -15,7 +24,6 @@ class VoteController extends Controller
 //        if ($existingVote) {
 //            return redirect()->back()->withErrors(['error' => 'You have already voted.'])->withFragment('about');
 //        }
-
         $validated = $request->validate([
             'vote' => 'required|in:igor,sidjey',
         ]);
