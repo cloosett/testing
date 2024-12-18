@@ -56,8 +56,13 @@ export default {
 
         async sendvote(voteOption) {
             try {
-                await axios.post('/api/vote', {vote: voteOption});
-                await this.getvote();
+                await axios.post('/api/vote', {vote: voteOption}).then(() => {
+                    if (voteOption === 'igor') {
+                        this.igor++;
+                    } else if (voteOption === 'sidjey') {
+                        this.sidjey++;
+                    }
+                });
             } catch (error) {
                 console.error("Error voting:", error);
             }
