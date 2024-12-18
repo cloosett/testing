@@ -34,59 +34,7 @@
     </header>
     <!-- About-->
     <section class="about-section text-center" id="about">
-        <div class="container px-4 px-lg-5">
-            <form action="{{ route('vote') }}" method="post">
-                @csrf
-                <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-lg-8">
-                        <h2 class="text-white mb-4 custom-text">ГОЛОСУЙ!</h2>
-                        <div style="display: flex; justify-content: center">
-                            <button class="pushable" name="vote" value="igor" style="margin-right: 50px;">
-                                <span class="shadow"></span>
-                                <span class="edge"></span>
-                                <span class="front"> IGOR </span>
-                            </button>
-                            <button class="pushable" name="vote" value="sidjey">
-                                <span class="shadow"></span>
-                                <span class="edge"></span>
-                                <span class="front"> SIDJEY </span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </form>
-            <table class="table" style="--bs-table-color: white; margin-top:25px;">
-                <thead>
-                <tr>
-                    <th scope="col">IGOR</th>
-                    <th scope="col">SIDJEY</th>
-                </tr>
-                </thead>
-                <tbody class="table-group-divider">
-                <tr>
-                    <td>{{ $votesIgor }}</td>
-                    <td>{{ $votesSidjey }}</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-        @if ($errors->has('error'))
-            <div class="alert alert-danger" style="max-width: 70%; margin: 0 auto">
-                {{ $errors->first('error') }}
-            </div>
-        @endif
-
-        @if ($errors->has('vote'))
-            <div class="alert alert-danger" style="max-width: 70%; margin: 0 auto">
-                {{ $errors->first('vote') }}
-            </div>
-        @endif
-
-        @if (session('message'))
-            <div class="alert alert-success" style="max-width: 70%; margin: 0 auto">
-                {{ session('message') }}
-            </div>
-        @endif
+        <vote></vote>
         <div class="container px-4 px-lg-5" style="margin-top: 100px;">
             <div class="row gx-4 gx-lg-5">
                 <div class="col-md-10 col-lg-8 mx-auto text-center">
@@ -113,7 +61,6 @@
             </div>
         </div>
     </section>
-    <counter></counter>
     <!-- Contact-->
     <section class="contact-section bg-black">
         <div class="container px-4 px-lg-5">
