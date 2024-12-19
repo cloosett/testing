@@ -11301,8 +11301,4 @@ hsl(248, 39%, 29%) 100% !important
     transition: all 0.3s ease-in-out !important;
 }
 
-.custom-text:hover {
-    transform: scale(1.1) !important;
-    text-shadow: 4px 4px 15px rgba(0, 0, 0, 0.8) !important;
-}
 
