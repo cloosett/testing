@@ -19,11 +19,6 @@ class VoteController extends Controller
     }
     public function vote(Request $request)
     {
-//        $existingVote = Votes::where('ip_address', $request->ip())->first();
-//
-//        if ($existingVote) {
-//            return redirect()->back()->withErrors(['error' => 'You have already voted.'])->withFragment('about');
-//        }
         $validated = $request->validate([
             'vote' => 'required|in:igor,sidjey',
         ]);
