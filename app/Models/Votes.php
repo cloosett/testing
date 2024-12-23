@@ -11,5 +11,6 @@ class Votes extends Model
     protected $fillable = [
         'ip_address',
         'vote',
+        'count'
     ];
 }
