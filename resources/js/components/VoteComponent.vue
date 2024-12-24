@@ -61,25 +61,21 @@ export default {
 
         async sendvote(voteOption) {
             try {
-                // Виконуємо POST-запит для голосування
                 const response = await axios.post('/api/vote', { vote: voteOption });
-
-                // Якщо голосування пройшло успішно
                 if (response.data === 'success') {
                     if (voteOption === 'igor') {
-                        this.igor++; // Збільшуємо лічильник голосів для Ігора
+                        this.igor++;
                     } else if (voteOption === 'sidjey') {
-                        this.sidjey++; // Збільшуємо лічильник голосів для Сіджея
+                        this.sidjey++;
                     }
 
-                    this.message = 'Ваш голос успішно враховано!'; // Повідомлення про успіх
-                    this.messageType = 'success'; // Тип повідомлення - успіх
+                    this.message = 'Ваш голос успішно враховано!';
+                    this.messageType = 'success';
                 }
             } catch (error) {
-                // Якщо сталася помилка (наприклад, голосування з цієї IP вже є)
-                if (error.response && error.response.data === 'Ви вже проголосували за цього кандидата!') {
-                    this.message = 'Ви вже проголосували за цього кандидата!'; // Повідомлення про помилку
-                    this.messageType = 'error'; // Тип повідомлення - помилка
+                if (error.response && error.response.data === 'Ви не можете голосувати за багато раз!') {
+                    this.message = 'Ви не можете голосувати за багато раз!';
+                    this.messageType = 'error';
                 } else {
                     console.error("Error voting:", error);
                 }
