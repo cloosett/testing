@@ -13,4 +13,8 @@ class Votes extends Model
         'vote',
         'count'
     ];
+    public function ips()
+    {
+        return $this->hasMany(VoteIp::class);
+    }
 }
