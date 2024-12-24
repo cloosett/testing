@@ -5,7 +5,7 @@
 */
 //
 // Scripts
-// 
+//
 
 window.addEventListener('DOMContentLoaded', event => {
 
@@ -23,7 +23,7 @@ window.addEventListener('DOMContentLoaded', event => {
 
     };
 
-    // Shrink the navbar 
+    // Shrink the navbar
     navbarShrink();
 
     // Shrink the navbar when page is scrolled
@@ -50,5 +50,21 @@ window.addEventListener('DOMContentLoaded', event => {
             }
         });
     });
-
 });
+// document.addEventListener('DOMContentLoaded', function () {
+//     const navbarToggle = document.querySelector('.navbar-toggler'); // Кнопка меню
+//     const navbar = document.querySelector('#navbarResponsive'); // Меню
+//
+//     navbarToggle.addEventListener('click', function () {
+//         // Перевіряємо, чи є у меню клас 'collapse'
+//         if (navbar.classList.contains('collapse')) {
+//             // Якщо клас є, видаляємо 'collapse' і додаємо 'navbar-collapse'
+//             navbar.classList.remove('collapse');
+//             navbar.classList.add('navbar-collapse');
+//         } else {
+//             // Якщо класу 'collapse' немає, додаємо його назад
+//             navbar.classList.add('collapse');
+//             navbar.classList.remove('navbar-collapse');
+//         }
+//     });
+// });

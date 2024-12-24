@@ -22,12 +22,59 @@
         </div>
         <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">Update votes</button>
     </form>
+    <table class="min-w-full table-auto border-collapse border border-gray-200 mt-4">
+        <thead>
+        <tr>
+            <th class="border px-4 py-2">Igor</th>
+            <th class="border px-4 py-2">Sidjey</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="border px-4 py-2">
+                @foreach($votes as $vote)
+                    @if($vote->vote == 'igor')
+                        @foreach($vote->ips as $ip)
+                            <div class="mb-2">{{ $ip->ip_address }}</div>
+                        @endforeach
+                    @endif
+                @endforeach
+            </td>
 
-    <!-- Очищення голосів -->
+            <td class="border px-4 py-2">
+                @foreach($votes as $vote)
+                    @if($vote->vote == 'sidjey')
+                        @foreach($vote->ips as $ip)
+                            <div class="mb-2">{{ $ip->ip_address }}</div>
+                        @endforeach
+                    @endif
+                @endforeach
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
     <form method="POST" action="{{ route('clearVotes') }}" class="mt-4">
         @csrf
         <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">Clear votes</button>
     </form>
+
+    <table class="min-w-full table-auto border-collapse border border-gray-200 mt-4">
+        <thead>
+        <tr>
+            <th class="border px-4 py-2">Offers</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="border px-4 py-2">
+                @foreach($offers as $offer)
+                    <div class="mb-2">{{ $offer->offer }}</div>
+                @endforeach
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 </body>
 </html>

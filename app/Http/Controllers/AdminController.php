@@ -9,7 +9,9 @@ class AdminController extends Controller
 {
     public function index()
     {
-        return view('admin.index');
+        $votes = \App\Models\Votes::with('ips')->get();
+        $offers = \App\Models\Offers::all();
+        return view('admin.index', compact('votes', 'offers'));
     }
 
     public function updateVotes(Request $request)
@@ -24,7 +26,7 @@ class AdminController extends Controller
 
     public function clearVotes()
     {
-        DB::table('votes')->truncate();
+        DB::table('votes_ips')->truncate();
 
         return redirect()->back()->with('success', 'All data has been cleared');
     }
