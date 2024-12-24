@@ -27,20 +27,20 @@ class VoteController extends Controller
         ]);
 
         $ipAddress = $request->ip();
-
         $vote = Votes::with('ips')->where('vote', $validated['vote'])->first();
         if (!$vote) {
             $vote = Votes::create([
                 'vote' => $validated['vote'],
                 'count' => 1,
+                'ip_address' => '127.0.0.1',
             ]);
         }
+
 
         $existingVoteIp = VoteIp::where('ip_address', $ipAddress)->first();
         if ($existingVoteIp) {
             return response()->json('Ви не можете голосувати за багато раз!', 400);
         }
-
         $vote->ips()->create([
             'ip_address' => $ipAddress,
         ]);
