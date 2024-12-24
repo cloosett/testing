@@ -22,26 +22,41 @@ class VoteController extends Controller
     public function vote(Request $request)
     {
         $validated = $request->validate([
-            'vote' => 'required|in:igor,sidjey',  // Перевірка на правильність значення vote
+            'vote' => 'required|in:igor,sidjey',
         ]);
 
-        // Перевіряємо, чи є запис для обраного голосу (igor чи sidjey)
-        $vote = Votes::where('vote', $validated['vote'])->first();
+        // Отримуємо IP-адресу користувача
+        $ipAddress = $request->ip();
 
-        // Якщо запис знайдений, збільшуємо count на 1, інакше створюємо новий запис
-        if ($vote) {
-            $vote->count++;
-            $vote->save();
-        } else {
-            Votes::create([
+        // Шукаємо голос, чи існує вже голосування для цього кандидата
+        $vote = Votes::with('ips')->where('vote', $validated['vote'])->first();
+        if (!$vote) {
+            // Якщо голосу ще немає, створюємо новий запис
+            $vote = Votes::create([
                 'vote' => $validated['vote'],
-                'ip_address' => $request->ip(),
-                'count' => 1,  // При першому голосуванні ставимо 1 голос
+                'count' => 1,
             ]);
         }
 
+        // Перевіряємо, чи вже є запис з цією IP-адресою для цього голосу
+        $existingVoteIp = $vote->ips()->where('ip_address', $ipAddress)->first();
+        if ($existingVoteIp) {
+            // Якщо голос з цієї IP вже є, повертаємо помилку з кодом 400
+            return response()->json('Ви вже проголосували за цього кандидата!', 400);
+        }
+
+        // Додаємо нову IP-адресу для голосування
+        $vote->ips()->create([
+            'ip_address' => $ipAddress,
+        ]);
+
+        // Збільшуємо лічильник голосів
+        $vote->increment('count');
+
         return response()->json('success');
     }
+
+
 
 
     public function offers(Request $request)

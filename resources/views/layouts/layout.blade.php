@@ -8,7 +8,7 @@
     <meta http-equiv="Expires" content="0">
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Grayscale - Start Bootstrap Theme</title>
+    <title>Sofa - Igor && Sidjey</title>
     <link rel="icon" type="image/x-icon" href="{{asset('favicon.ico')}}" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />

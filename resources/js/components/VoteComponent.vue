@@ -31,6 +31,9 @@
             </tr>
             </tbody>
         </table>
+        <div v-if="message" :class="['message', messageType]">
+            {{ message }}
+        </div>
     </div>
 </template>
 
@@ -41,6 +44,8 @@ export default {
         return {
             igor: 0,
             sidjey: 0,
+            message: '',  // Для зберігання повідомлення
+            messageType: '',
         }
     },
     methods: {
@@ -56,17 +61,32 @@ export default {
 
         async sendvote(voteOption) {
             try {
-                await axios.post('/api/vote', {vote: voteOption}).then(() => {
+                // Виконуємо POST-запит для голосування
+                const response = await axios.post('/api/vote', { vote: voteOption });
+
+                // Якщо голосування пройшло успішно
+                if (response.data === 'success') {
                     if (voteOption === 'igor') {
-                        this.igor++;
+                        this.igor++; // Збільшуємо лічильник голосів для Ігора
                     } else if (voteOption === 'sidjey') {
-                        this.sidjey++;
+                        this.sidjey++; // Збільшуємо лічильник голосів для Сіджея
                     }
-                });
+
+                    this.message = 'Ваш голос успішно враховано!'; // Повідомлення про успіх
+                    this.messageType = 'success'; // Тип повідомлення - успіх
+                }
             } catch (error) {
-                console.error("Error voting:", error);
+                // Якщо сталася помилка (наприклад, голосування з цієї IP вже є)
+                if (error.response && error.response.data === 'Ви вже проголосували за цього кандидата!') {
+                    this.message = 'Ви вже проголосували за цього кандидата!'; // Повідомлення про помилку
+                    this.messageType = 'error'; // Тип повідомлення - помилка
+                } else {
+                    console.error("Error voting:", error);
+                }
             }
         }
+
+
     },
     mounted() {
         this.getvote();
@@ -75,5 +95,20 @@ export default {
 </script>
 
 <style>
-/* Ваші стилі */
+.message {
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.message.success {
+    background-color: #28a745;
+    color: white;
+}
+
+.message.error {
+    background-color: #dc3545;
+    color: white;
+}
 </style>
